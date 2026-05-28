@@ -4,15 +4,23 @@
   "description": "",
   "main": "index.js",
   "type": "commonjs",
+  "//": {
+    "1": "node <file to run>",
+    "2": "npm start (you have to set it on scripts key)",
+    "Way to run": "2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no manager specified\" && exit 1",
+    "start": "node manager/runner.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "dotenv": "^17.4.2",
     "express": "^4.18.2",
     "mysql2": "^3.3.5",
-    "sequelize": "^6.32.0"
+    "sequelize": "^6.32.0",
+    "winston": "^3.19.0"
   }
 }
