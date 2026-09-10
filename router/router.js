@@ -64,7 +64,6 @@ routerStudent.get('/reads', async (req, res) => {
         }).catch((errors) => {
             throw errors
         })
-
     } catch (errors) {
         log.debug(`course : ${errors.message}`)
         throw errors
@@ -81,7 +80,6 @@ routerStudent.get('/read/(:student_id)', async (req, res) => {
         }).catch((errors) => {
             throw errors
         })
-
     } catch (errors) {
         log.debug(`course : ${errors.message}`)
         throw errors

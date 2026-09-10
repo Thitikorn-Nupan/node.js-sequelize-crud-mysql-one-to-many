@@ -16,7 +16,7 @@ class CrudService {
             currentdatetime,
             locations
         }, {include: Location})
-        /*
+        /**
             Very smart!
             Executing (default): INSERT INTO `students` (`student_id`,`student_fullname`,`student_weight`,`student_height`,`student_grade`,`currentdatetime`) VALUES (DEFAULT,?,?,?,?,?);
             Executing (default): INSERT INTO `locations` (`province`,`district`,`zipcode`,`phone`,`key_student_id`) VALUES (?,?,?,?,?);
@@ -24,7 +24,7 @@ class CrudService {
     }
     readsTwoTables = async () => {
         return await Student.findAll({include: Location})
-        /*
+        /**
             Executing (default):
             SELECT `students`.`student_id`, `students`.`student_fullname`, `students`.`student_weight`, `students`.`student_height`, `students`.`student_grade`, `students`.`currentdatetime`,
                     `locations`.`province` AS `locations.province`, `locations`.`district` AS `locations.district`, `locations`.`zipcode` AS `locations.zipcode`, `locations`.`phone` AS `locations.phone`, `locations`.`key_student_id` AS `locations.key_student_id`
@@ -34,7 +34,7 @@ class CrudService {
 
     readTwoTablesById = async (student_id) => {
         return await Student.findByPk(student_id, {include: Location})
-        /*
+        /**
             Executing (default):
             SELECT `students`.`student_id`, `students`.`student_fullname`, `students`.`student_weight`, `students`.`student_height`, `students`.`student_grade`, `students`.`currentdatetime`,
                     `locations`.`province` AS `locations.province`, `locations`.`district` AS `locations.district`, `locations`.`zipcode` AS `locations.zipcode`, `locations`.`phone` AS `locations.phone`, `locations`.`key_student_id` AS `locations.key_student_id`
@@ -50,7 +50,7 @@ class CrudService {
             student_grade,
             currentdatetime
         }, {where: {student_id: student_id}})
-        /*
+        /**
             Executing (default):
                 UPDATE `students` SET `student_fullname`=?,`student_weight`=?,`student_height`=?,`student_grade`=?,`currentdatetime`=? WHERE `student_id` = ?
         */
@@ -61,7 +61,10 @@ class CrudService {
     }
 
 
-    // location crud
+
+
+
+    // locations
     createLocationByIdStudent = async (province, district, zipcode, phone, student_id) => {
         await Student.findByPk(student_id).then((student) => {
             if (student != null) {
@@ -82,8 +85,8 @@ class CrudService {
     }
 
     deletesLocation = async (student_id) => {
-        await Student.findByPk(student_id).then((student_id) => {
-            if (student_id != null) {
+        await Student.findByPk(student_id).then((studentFound) => {
+            if (studentFound != null) {
                 let key_student_id = student_id
                 Location.destroy({where: {key_student_id: key_student_id}})
             } else {

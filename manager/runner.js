@@ -3,6 +3,7 @@ const restModulesService = require('../service/rest-modules-service'), router = 
 const restModulesServiceObj = new restModulesService()
 
 const application = restModulesServiceObj.express()
+
 application.use('/api-student', router.routerStudent)
 application.use('/api-location', router.routerLocation)
 application.listen(3000, (errors) => {

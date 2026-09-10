@@ -1,9 +1,9 @@
-// const log = require('../log/Logging').logger
+const log = require('../log/Logging').logger
 const {Sequelize} = require('sequelize');
 const dotenv = require('dotenv')
 const path = require('path')
 
-dotenv.config({path: path.resolve('../env/.env'),debug : true})
+dotenv.config({path: path.resolve('env/.env'),debug : true})
 
 class DatabaseConnect {
     #sequelize
@@ -40,11 +40,13 @@ class DatabaseConnect {
         return this.#sequelize
     }
 }
-/*new DatabaseConnect().sequelize.authenticate()
+/**
+new DatabaseConnect().sequelize.authenticate()
     .then(() => {
         log.debug('Connection has been established successfully.');
     })
     .catch(err => {
         log.debug('Unable to connect to the database:'+ err);
-    });*/
+});
+*/
 module.exports = new DatabaseConnect().sequelize
